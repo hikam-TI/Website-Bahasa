@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trigatra - Game Pembelajaran Bahasa Indonesia</title>
+    <title>BahasaKu - Game Pembelajaran Bahasa Indonesia</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
         <nav class="nav container">
             <a href="#" class="nav-logo">
                 <i class="fas fa-language"></i>
-                Trigatra
+                BahasaKu
             </a>
             <div class="nav-menu" id="nav-menu">
                 <ul class="nav-list">
@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="https://placehold.co/600x400" alt="Ilustrasi seseorang sedang belajar bahasa Indonesia dengan perangkat digital" class="hero-img">
+                    https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3ed38d7c-d305-4cb6-87d6-e55d5bf70a53.png
                 </div>
             </div>
         </section>
@@ -130,6 +130,29 @@
             </div>
         </section>
 
+        <!-- Learning Modal -->
+        <div class="modal" id="learningModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modalChapterTitle">Kosakata Dasar</h3>
+                    <button class="modal-close" id="closeLearningModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="learning-content" id="learningContent">
+                        <!-- Content will be loaded dynamically -->
+                    </div>
+                    <div class="learning-controls">
+                        <button class="button button-secondary" id="prevLesson">Sebelumnya</button>
+                        <span class="lesson-counter" id="lessonCounter">Pelajaran 1/5</span>
+                        <button class="button button-primary" id="nextLesson">Selanjutnya</button>
+                        <button class="button button-success" id="completeLesson" style="display: none;">Selesaikan Pelajaran</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Games Section -->
         <section class="games section" id="games">
             <div class="container">
@@ -140,7 +163,7 @@
                     <!-- Game 1 -->
                     <article class="game-card" data-game="tebak-kata">
                         <div class="game-image">
-                            <img src="https://placehold.co/400x300" alt="Ilustrasi permainan tebak kata dengan gambaran kata-kata melayang di udara" class="game-img">
+                            https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8036275f-b9f4-4c86-acb1-9a7821d2f926.png
                         </div>
                         <div class="game-content">
                             <h3 class="game-title">Tebak Kata</h3>
@@ -156,7 +179,7 @@
                     <!-- Game 2 -->
                     <article class="game-card" data-game="susun-kalimat">
                         <div class="game-image">
-                            <img src="https://placehold.co/400x300" alt="Ilustrasi permainan susun kalimat dengan potongan kata tersusun rapi" class="game-img">
+                            https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/98770c22-048e-4570-aa83-ba4fb19af2a2.png
                         </div>
                         <div class="game-content">
                             <h3 class="game-title">Susun Kalimat</h3>
@@ -172,7 +195,7 @@
                     <!-- Game 3 -->
                     <article class="game-card" data-game="cari-sinonim">
                         <div class="game-image">
-                            <img src="https://placehold.co/400x300" alt="Ilustrasi permainan cari sinonim dengan kata-kata yang saling terhubung" class="game-img">
+                            https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0f25162f-a82b-4bd7-9c79-21793ddb0839.png
                         </div>
                         <div class="game-content">
                             <h3 class="game-title">Cari Sinonim</h3>
@@ -299,12 +322,10 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2023 BahasaKu. Semua hak cipta dilindungi.</p>
+            <p>© 2023 BahasaKu. Semua hak cipta dilindungi.</p>
         </div>
     </footer>
 
     <script src="app.js"></script>
 </body>
-
 </html>
-
