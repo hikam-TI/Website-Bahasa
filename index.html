@@ -3,1184 +3,306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetaKata - Belajar Bahasa Indonesia dengan Menyenangkan</title>
+    <title>BahasaKu - Game Pembelajaran Bahasa Indonesia</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #3B82F6;
-            --primary-dark: #2563EB;
-            --secondary: #10B981;
-            --accent: #F59E0B;
-            --light: #F3F4F6;
-            --dark: #1F2937;
-            --success: #10B981;
-            --warning: #F59E0B;
-            --danger: #EF4444;
-            --gray: #9CA3AF;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f8fafc;
-            color: var(--dark);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo i {
-            color: var(--accent);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 1.5rem;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-        }
-
-        nav a:hover, nav a.active {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .user-profile {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            cursor: pointer;
-        }
-
-        .user-avatar {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            background-color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background-color: white;
-            border-radius: 2px;
-            transition: all 0.3s;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 3rem 0;
-            text-align: center;
-            background: linear-gradient(rgba(59, 130, 246, 0.05), rgba(59, 130, 246, 0.1));
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--dark);
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-        }
-
-        .btn-secondary {
-            background-color: white;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--light);
-        }
-
-        /* Dashboard */
-        .dashboard {
-            padding: 2rem 0;
-        }
-
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .card-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--dark);
-        }
-
-        .card-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-        }
-
-        .bg-primary {
-            background-color: var(--primary);
-        }
-
-        .bg-success {
-            background-color: var(--success);
-        }
-
-        .bg-accent {
-            background-color: var(--accent);
-        }
-
-        .streak-info {
-            text-align: center;
-        }
-
-        .streak-count {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin: 0.5rem 0;
-        }
-
-        .streak-label {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
-        /* Progress Section */
-        .progress-section {
-            padding: 2rem 0;
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 50px;
-            height: 4px;
-            background-color: var(--primary);
-            border-radius: 2px;
-        }
-
-        .chapters-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .chapter-card {
-            background-color: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-        }
-
-        .chapter-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .chapter-image {
-            height: 160px;
-            background-color: var(--light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 3rem;
-        }
-
-        .chapter-content {
-            padding: 1.5rem;
-        }
-
-        .chapter-title {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-
-        .chapter-desc {
-            color: var(--gray);
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
-
-        .chapter-progress {
-            height: 8px;
-            background-color: var(--light);
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: 1rem;
-        }
-
-        .progress-bar {
-            height: 100%;
-            background-color: var(--success);
-            border-radius: 4px;
-        }
-
-        .progress-text {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.8rem;
-            color: var(--gray);
-        }
-
-        /* Games Section */
-        .games-section {
-            padding: 2rem 0;
-        }
-
-        .games-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .game-card {
-            background-color: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-        }
-
-        .game-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .game-image {
-            height: 160px;
-            background-color: var(--light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 3rem;
-        }
-
-        .game-content {
-            padding: 1.5rem;
-        }
-
-        .game-title {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-
-        .game-desc {
-            color: var(--gray);
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 3rem 0 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .footer-description {
-            color: var(--gray);
-            margin-bottom: 1rem;
-        }
-
-        .footer-heading {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .footer-heading::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 30px;
-            height: 3px;
-            background-color: var(--primary);
-            border-radius: 2px;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: var(--gray);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
-        /* Modal */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-        }
-
-        .modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-content {
-            background-color: white;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 500px;
-            padding: 2rem;
-            position: relative;
-            transform: translateY(-50px);
-            transition: transform 0.3s;
-        }
-
-        .modal.active .modal-content {
-            transform: translateY(0);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--gray);
-        }
-
-        .modal-title {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid var(--gray);
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        /* Game Screen */
-        .game-screen {
-            display: none;
-            padding: 2rem 0;
-        }
-
-        .game-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .game-question {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .game-options {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .game-option {
-            padding: 1.5rem;
-            background-color: white;
-            border: 2px solid var(--light);
-            border-radius: 12px;
-            text-align: center;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .game-option:hover {
-            border-color: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        .game-option.correct {
-            background-color: rgba(16, 185, 129, 0.1);
-            border-color: var(--success);
-            color: var(--success);
-        }
-
-        .game-option.incorrect {
-            background-color: rgba(239, 68, 68, 0.1);
-            border-color: var(--danger);
-            color: var(--danger);
-        }
-
-        .game-feedback {
-            text-align: center;
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            min-height: 2rem;
-        }
-
-        .game-actions {
-            display: flex;
-            justify-content: center;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-menu {
-                display: none;
-            }
-
-            .nav-menu.active {
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-                margin-top: 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .dashboard-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .game-options {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 1.5rem;
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .btn {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.9rem;
-            }
-
-            .card {
-                padding: 1rem;
-            }
-
-            .chapter-card, .game-card {
-                max-width: 100%;
-            }
-        }
-    </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-book-open"></i>
-                    <span>PetaKata</span>
-                </div>
-                
-                <div class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                
-                <nav>
-                    <ul class="nav-menu" id="navMenu">
-                        <li><a href="#" class="active">Beranda</a></li>
-                        <li><a href="#chapters">Chapter</a></li>
-                        <li><a href="#games">Game</a></li>
-                        <li><a href="#progress">Progress</a></li>
-                    </ul>
-                </nav>
-                
-                <div class="header-actions">
-                    <div class="user-profile" id="userProfile">
-                        <div class="user-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <span>Pengguna</span>
-                    </div>
+    <!-- Header Navigation -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="#" class="nav-logo">
+                <i class="fas fa-language"></i>
+                BahasaKu
+            </a>
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#home" class="nav-link">Beranda</a></li>
+                    <li class="nav-item"><a href="#chapters" class="nav-link">Chapter</a></li>
+                    <li class="nav-item"><a href="#games" class="nav-link">Game</a></li>
+                    <li class="nav-item"><a href="#progress" class="nav-link">Progress</a></li>
+                </ul>
+                <div class="nav-close" id="nav-close">
+                    <i class="fas fa-times"></i>
                 </div>
             </div>
-        </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Tingkatkan Kemampuan Bahasa Indonesiamu dengan Cara Menyenangkan</h1>
-            <p>Pelajari kosakata baru, kuasai tata bahasa, dan tingkatkan pemahaman membacamu melalui game-game seru dan interaktif.</p>
-            <div class="cta-buttons">
-                <button class="btn btn-primary" id="startLearning">
-                    <i class="fas fa-play"></i> Mulai Belajar
-                </button>
-                <button class="btn btn-secondary" id="exploreGames">
-                    <i class="fas fa-gamepad"></i> Jelajahi Game
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Dashboard -->
-    <section class="dashboard">
-        <div class="container">
-            <div class="dashboard-grid">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Progress Pembelajaran</h3>
-                        <div class="card-icon bg-primary">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                    </div>
-                    <div class="progress-text">
-                        <span>15 dari 30 Chapter</span>
-                        <span>50%</span>
-                    </div>
-                    <div class="chapter-progress">
-                        <div class="progress-bar" style="width: 50%"></div>
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero section" id="home">
+            <div class="hero-container container grid">
+                <div class="hero-content">
+                    <h1 class="hero-title">Tingkatkan Kemampuan Bahasa Indonesiamu</h1>
+                    <p class="hero-description">Belajar bahasa Indonesia jadi menyenangkan dengan game interaktif dan tantangan harian. Mulai perjalanan belajarmu sekarang!</p>
+                    <div class="hero-buttons">
+                        <a href="#chapters" class="button button-primary">Mulai Belajar</a>
+                        <a href="#games" class="button button-secondary">Main Game</a>
                     </div>
                 </div>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Game Terselesaikan</h3>
-                        <div class="card-icon bg-success">
-                            <i class="fas fa-trophy"></i>
-                        </div>
-                    </div>
-                    <h2 class="streak-count">24</h2>
-                    <p class="streak-label">Game berhasil diselesaikan</p>
-                </div>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Streak Harian</h3>
-                        <div class="card-icon bg-accent">
-                            <i class="fas fa-fire"></i>
-                        </div>
-                    </div>
-                    <h2 class="streak-count">7</h2>
-                    <p class="streak-label">Hari berturut-turut</p>
+                <div class="hero-image">
+                    <img src="https://placehold.co/600x400" alt="Ilustrasi seseorang sedang belajar bahasa Indonesia dengan perangkat digital" class="hero-img">
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Chapters Section -->
-    <section class="progress-section" id="chapters">
-        <div class="container">
-            <h2 class="section-title">Chapter Pembelajaran</h2>
-            <div class="chapters-container">
-                <div class="chapter-card">
-                    <div class="chapter-image">
-                        <i class="fas fa-font"></i>
-                    </div>
-                    <div class="chapter-content">
+        <!-- Chapters Section -->
+        <section class="chapters section" id="chapters">
+            <div class="container">
+                <h2 class="section-title">Chapter Pembelajaran</h2>
+                <p class="section-subtitle">Pilih chapter untuk mempelajari topik bahasa Indonesia tertentu</p>
+                
+                <div class="chapters-container grid">
+                    <!-- Chapter 1 -->
+                    <article class="chapter-card">
+                        <div class="chapter-header">
+                            <div class="chapter-icon">
+                                <i class="fas fa-font"></i>
+                            </div>
+                            <span class="chapter-badge">Pemula</span>
+                        </div>
                         <h3 class="chapter-title">Kosakata Dasar</h3>
-                        <p class="chapter-desc">Pelajari kata-kata dasar yang sering digunakan dalam percakapan sehari-hari.</p>
+                        <p class="chapter-description">Pelajari kata-kata dasar yang sering digunakan dalam percakapan sehari-hari.</p>
                         <div class="chapter-progress">
-                            <div class="progress-bar" style="width: 80%"></div>
+                            <div class="progress-text">
+                                <span>Progress</span>
+                                <span class="progress-percent">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-progress="0"></div>
+                            </div>
                         </div>
-                        <div class="progress-text">
-                            <span>8/10 Pelajaran</span>
-                            <span>80%</span>
+                        <button class="button button-outline chapter-button" data-chapter="1">Mulai Belajar</button>
+                    </article>
+                    
+                    <!-- Chapter 2 -->
+                    <article class="chapter-card">
+                        <div class="chapter-header">
+                            <div class="chapter-icon">
+                                <i class="fas fa-pencil-alt"></i>
+                            </div>
+                            <span class="chapter-badge">Menengah</span>
                         </div>
-                        <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Lanjutkan</button>
-                    </div>
-                </div>
-                
-                <div class="chapter-card">
-                    <div class="chapter-image">
-                        <i class="fas fa-pencil-alt"></i>
-                    </div>
-                    <div class="chapter-content">
                         <h3 class="chapter-title">Tata Bahasa</h3>
-                        <p class="chapter-desc">Pahami aturan-aturan tata bahasa Indonesia yang benar.</p>
+                        <p class="chapter-description">Pahami aturan-aturan tata bahasa Indonesia yang benar.</p>
                         <div class="chapter-progress">
-                            <div class="progress-bar" style="width: 40%"></div>
+                            <div class="progress-text">
+                                <span>Progress</span>
+                                <span class="progress-percent">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-progress="0"></div>
+                            </div>
                         </div>
-                        <div class="progress-text">
-                            <span>4/10 Pelajaran</span>
-                            <span>40%</span>
+                        <button class="button button-outline chapter-button" data-chapter="2">Mulai Belajar</button>
+                    </article>
+                    
+                    <!-- Chapter 3 -->
+                    <article class="chapter-card">
+                        <div class="chapter-header">
+                            <div class="chapter-icon">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                            <span class="chapter-badge">Lanjutan</span>
                         </div>
-                        <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Lanjutkan</button>
-                    </div>
-                </div>
-                
-                <div class="chapter-card">
-                    <div class="chapter-image">
-                        <i class="fas fa-book-reader"></i>
-                    </div>
-                    <div class="chapter-content">
                         <h3 class="chapter-title">Pemahaman Bacaan</h3>
-                        <p class="chapter-desc">Tingkatkan kemampuan memahami teks dengan latihan membaca.</p>
+                        <p class="chapter-description">Tingkatkan kemampuan memahami teks dengan latihan membaca.</p>
                         <div class="chapter-progress">
-                            <div class="progress-bar" style="width: 20%"></div>
+                            <div class="progress-text">
+                                <span>Progress</span>
+                                <span class="progress-percent">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-progress="0"></div>
+                            </div>
                         </div>
-                        <div class="progress-text">
-                            <span>2/10 Pelajaran</span>
-                            <span>20%</span>
+                        <button class="button button-outline chapter-button" data-chapter="3">Mulai Belajar</button>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Games Section -->
+        <section class="games section" id="games">
+            <div class="container">
+                <h2 class="section-title">Game Seru</h2>
+                <p class="section-subtitle">Asah kemampuan bahasa Indonesiamu dengan game-game menyenangkan</p>
+                
+                <div class="games-container grid">
+                    <!-- Game 1 -->
+                    <article class="game-card" data-game="tebak-kata">
+                        <div class="game-image">
+                            <img src="https://placehold.co/400x300" alt="Ilustrasi permainan tebak kata dengan gambaran kata-kata melayang di udara" class="game-img">
                         </div>
-                        <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Lanjutkan</button>
-                    </div>
+                        <div class="game-content">
+                            <h3 class="game-title">Tebak Kata</h3>
+                            <p class="game-description">Tebak kata berdasarkan definisi yang diberikan. Tingkatkan perbendaharaan katamu!</p>
+                            <div class="game-stats">
+                                <span class="game-stat"><i class="fas fa-star"></i> Kesulitan: Mudah</span>
+                                <span class="game-stat"><i class="fas fa-clock"></i> 5-10 menit</span>
+                            </div>
+                            <button class="button button-primary game-button">Main Sekarang</button>
+                        </div>
+                    </article>
+                    
+                    <!-- Game 2 -->
+                    <article class="game-card" data-game="susun-kalimat">
+                        <div class="game-image">
+                            <img src="https://placehold.co/400x300" alt="Ilustrasi permainan susun kalimat dengan potongan kata tersusun rapi" class="game-img">
+                        </div>
+                        <div class="game-content">
+                            <h3 class="game-title">Susun Kalimat</h3>
+                            <p class="game-description">Susun kata-kata acak menjadi kalimat yang benar dan bermakna.</p>
+                            <div class="game-stats">
+                                <span class="game-stat"><i class="fas fa-star"></i> Kesulitan: Sedang</span>
+                                <span class="game-stat"><i class="fas fa-clock"></i> 10-15 menit</span>
+                            </div>
+                            <button class="button button-primary game-button">Main Sekarang</button>
+                        </div>
+                    </article>
+                    
+                    <!-- Game 3 -->
+                    <article class="game-card" data-game="cari-sinonim">
+                        <div class="game-image">
+                            <img src="https://placehold.co/400x300" alt="Ilustrasi permainan cari sinonim dengan kata-kata yang saling terhubung" class="game-img">
+                        </div>
+                        <div class="game-content">
+                            <h3 class="game-title">Cari Sinonim</h3>
+                            <p class="game-description">Temukan pasangan kata yang memiliki makna sama atau mirip.</p>
+                            <div class="game-stats">
+                                <span class="game-stat"><i class="fas fa-star"></i> Kesulitan: Sulit</span>
+                                <span class="game-stat"><i class="fas fa-clock"></i> 15-20 menit</span>
+                            </div>
+                            <button class="button button-primary game-button">Main Sekarang</button>
+                        </div>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Games Section -->
-    <section class="games-section" id="games">
-        <div class="container">
-            <h2 class="section-title">Game Seru</h2>
-            <div class="games-container">
-                <div class="game-card" data-game="tebak-kata">
-                    <div class="game-image">
-                        <i class="fas fa-question-circle"></i>
-                    </div>
-                    <div class="game-content">
-                        <h3 class="game-title">Tebak Kata</h3>
-                        <p class="game-desc">Tebak kata berdasarkan definisi yang diberikan. Tingkatkan perbendaharaan katamu!</p>
-                        <button class="btn btn-primary" style="width: 100%;">Main Sekarang</button>
-                    </div>
-                </div>
+        <!-- Progress Section -->
+        <section class="progress-section section" id="progress">
+            <div class="container">
+                <h2 class="section-title">Progress Pembelajaran</h2>
+                <p class="section-subtitle">Lihat perkembangan kemampuan bahasa Indonesiamu</p>
                 
-                <div class="game-card" data-game="susun-kalimat">
-                    <div class="game-image">
-                        <i class="fas fa-puzzle-piece"></i>
+                <div class="progress-container grid">
+                    <div class="progress-card">
+                        <div class="progress-chart">
+                            <div class="chart" id="progressChart">
+                                <div class="chart-center">
+                                    <span class="chart-percent">0%</span>
+                                    <span class="chart-label">Tercapai</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress-stats">
+                            <div class="progress-stat">
+                                <span class="stat-value">0</span>
+                                <span class="stat-label">Chapter Diselesaikan</span>
+                            </div>
+                            <div class="progress-stat">
+                                <span class="stat-value">0</span>
+                                <span class="stat-label">Game Dimainkan</span>
+                            </div>
+                            <div class="progress-stat">
+                                <span class="stat-value">0</span>
+                                <span class="stat-label">Hari Berurut</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="game-content">
-                        <h3 class="game-title">Susun Kalimat</h3>
-                        <p class="game-desc">Susun kata-kata acak menjadi kalimat yang benar dan bermakna.</p>
-                        <button class="btn btn-primary" style="width: 100%;">Main Sekarang</button>
-                    </div>
-                </div>
-                
-                <div class="game-card" data-game="cari-sinonim">
-                    <div class="game-image">
-                        <i class="fas fa-exchange-alt"></i>
-                    </div>
-                    <div class="game-content">
-                        <h3 class="game-title">Cari Sinonim</h3>
-                        <p class="game-desc">Temukan pasangan kata yang memiliki makna sama atau mirip.</p>
-                        <button class="btn btn-primary" style="width: 100%;">Main Sekarang</button>
+                    
+                    <div class="streak-card">
+                        <h3 class="streak-title">Streak Harian</h3>
+                        <div class="streak-display">
+                            <div class="streak-count">0</div>
+                            <span class="streak-label">hari berturut-turut</span>
+                        </div>
+                        <p class="streak-description">Mainkan game atau pelajari chapter setiap hari untuk meningkatkan streak-mu!</p>
+                        <div class="streak-calendar" id="streakCalendar">
+                            <!-- Calendar will be generated by JavaScript -->
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Game Screen (Initially Hidden) -->
-    <section class="game-screen" id="gameScreen">
-        <div class="container">
-            <div class="game-header">
-                <button class="btn btn-secondary" id="backToGames">
-                    <i class="fas fa-arrow-left"></i> Kembali
-                </button>
-                <div class="streak-info">
-                    <span class="streak-label">Skor</span>
-                    <span class="streak-count" id="gameScore">0</span>
+        <!-- Game Modal -->
+        <div class="modal" id="gameModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modalGameTitle">Tebak Kata</h3>
+                    <button class="modal-close" id="modalClose">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="game-screen">
+                        <div class="game-question-container">
+                            <p class="game-question" id="gameQuestion">Apa sinonim dari kata "Besar"?</p>
+                        </div>
+                        <div class="game-options" id="gameOptions">
+                            <button class="game-option" data-correct="true">Agung</button>
+                            <button class="game-option" data-correct="false">Kecil</button>
+                            <button class="game-option" data-correct="false">Sempit</button>
+                            <button class="game-option" data-correct="false">Pendek</button>
+                        </div>
+                        <div class="game-feedback" id="gameFeedback"></div>
+                        <div class="game-controls">
+                            <button class="button button-secondary" id="nextQuestion">Pertanyaan Berikutnya</button>
+                            <button class="button button-primary" id="finishGame">Selesaikan Game</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="game-question" id="gameQuestion">
-                Pilih sinonim yang tepat untuk kata "Besar"
-            </div>
-            
-            <div class="game-options" id="gameOptions">
-                <div class="game-option">Agung</div>
-                <div class="game-option">Kecil</div>
-                <div class="game-option">Sempit</div>
-                <div class="game-option">Pendek</div>
-            </div>
-            
-            <div class="game-feedback" id="gameFeedback"></div>
-            
-            <div class="game-actions">
-                <button class="btn btn-primary" id="nextQuestion" disabled>
-                    Pertanyaan Selanjutnya <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
         </div>
-    </section>
+    </main>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
+    <footer class="footer">
+        <div class="footer-container container grid">
             <div class="footer-content">
-                <div>
-                    <div class="footer-logo">
-                        <i class="fas fa-book-open"></i>
-                        <span>PetaKata</span>
-                    </div>
-                    <p class="footer-description">
-                        Platform pembelajaran bahasa Indonesia interaktif dengan game dan pelajaran yang menyenangkan.
-                    </p>
-                </div>
-                
-                <div>
-                    <h3 class="footer-heading">Tautan Cepat</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Beranda</a></li>
-                        <li><a href="#chapters">Chapter</a></li>
-                        <li><a href="#games">Game</a></li>
-                        <li><a href="#progress">Progress</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="footer-heading">Bantuan</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Kontak</a></li>
-                        <li><a href="#">Kebijakan Privasi</a></li>
-                        <li><a href="#">Syarat & Ketentuan</a></li>
-                    </ul>
-                </div>
+                <a href="#" class="footer-logo">
+                    <i class="fas fa-language"></i>
+                    BahasaKu
+                </a>
+                <p class="footer-description">
+                    Platform pembelajaran bahasa Indonesia interaktif dengan game dan pelajaran yang menyenangkan.
+                </p>
             </div>
             
-            <div class="copyright">
-                &copy; 2023 PetaKata. Semua hak cipta dilindungi.
+            <div class="footer-content">
+                <h3 class="footer-title">Tautan Cepat</h3>
+                <ul class="footer-links">
+                    <li><a href="#home" class="footer-link">Beranda</a></li>
+                    <li><a href="#chapters" class="footer-link">Chapter</a></li>
+                    <li><a href="#games" class="footer-link">Game</a></li>
+                    <li><a href="#progress" class="footer-link">Progress</a></li>
+                </ul>
             </div>
+            
+            <div class="footer-content">
+                <h3 class="footer-title">Kontak Kami</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:info@bahasaku.id" class="footer-link">info@bahasaku.id</a></li>
+                    <li><a href="tel:+62123456789" class="footer-link">+62 123 456 789</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 BahasaKu. Semua hak cipta dilindungi.</p>
         </div>
     </footer>
 
-    <!-- Login Modal -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <button class="modal-close" id="closeLoginModal">
-                <i class="fas fa-times"></i>
-            </button>
-            <h2 class="modal-title">Masuk ke PetaKata</h2>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" id="email" class="form-input" placeholder="alamat@email.com" required>
-                </div>
-                <div class="form-group">
-                    <label for="password" class="form-label">Kata Sandi</label>
-                    <input type="password" id="password" class="form-input" placeholder="Masukkan kata sandi" required>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Masuk</button>
-            </form>
-            <p style="text-align: center; margin-top: 1rem;">
-                Belum punya akun? <a href="#" style="color: var(--primary);">Daftar di sini</a>
-            </p>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Elements
-            const hamburger = document.getElementById('hamburger');
-            const navMenu = document.getElementById('navMenu');
-            const userProfile = document.getElementById('userProfile');
-            const loginModal = document.getElementById('loginModal');
-            const closeLoginModal = document.getElementById('closeLoginModal');
-            const loginForm = document.getElementById('loginForm');
-            const gameCards = document.querySelectorAll('.game-card');
-            const gameScreen = document.getElementById('gameScreen');
-            const backToGames = document.getElementById('backToGames');
-            const gameOptions = document.querySelectorAll('.game-option');
-            const nextQuestion = document.getElementById('nextQuestion');
-            const gameFeedback = document.getElementById('gameFeedback');
-            const gameScore = document.getElementById('gameScore');
-            const startLearning = document.getElementById('startLearning');
-            const exploreGames = document.getElementById('exploreGames');
-            
-            // Toggle mobile menu
-            hamburger.addEventListener('click', function() {
-                navMenu.classList.toggle('active');
-            });
-            
-            // Show login modal
-            userProfile.addEventListener('click', function() {
-                loginModal.classList.add('active');
-            });
-            
-            // Close login modal
-            closeLoginModal.addEventListener('click', function() {
-                loginModal.classList.remove('active');
-            });
-            
-            // Close modal when clicking outside
-            loginModal.addEventListener('click', function(e) {
-                if (e.target === loginModal) {
-                    loginModal.classList.remove('active');
-                }
-            });
-            
-            // Handle login form submission
-            loginForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = document.getElementById('email').value;
-                const password = document.getElementById('password').value;
-                
-                // Simulate login process
-                setTimeout(function() {
-                    alert(`Selamat datang! Email: ${email}`);
-                    loginModal.classList.remove('active');
-                    userProfile.querySelector('span').textContent = email.split('@')[0];
-                }, 500);
-            });
-            
-            // Start learning button
-            startLearning.addEventListener('click', function() {
-                document.getElementById('chapters').scrollIntoView({ behavior: 'smooth' });
-            });
-            
-            // Explore games button
-            exploreGames.addEventListener('click', function() {
-                document.getElementById('games').scrollIntoView({ behavior: 'smooth' });
-            });
-            
-            // Start game when clicking on a game card
-            gameCards.forEach(card => {
-                card.addEventListener('click', function(e) {
-                    if (e.target.tagName === 'BUTTON' || e.target.parentElement.tagName === 'BUTTON') {
-                        const gameType = this.dataset.game;
-                        startGame(gameType);
-                    }
-                });
-            });
-            
-            // Back to games list
-            backToGames.addEventListener('click', function() {
-                gameScreen.style.display = 'none';
-            });
-            
-            // Game logic
-            let currentScore = 0;
-            let currentGame = null;
-            
-            function startGame(gameType) {
-                currentGame = gameType;
-                currentScore = 0;
-                gameScore.textContent = '0';
-                gameScreen.style.display = 'block';
-                gameFeedback.textContent = '';
-                nextQuestion.disabled = true;
-                
-                // Scroll to game screen
-                gameScreen.scrollIntoView({ behavior: 'smooth' });
-                
-                // Set up the first question based on game type
-                setupQuestion(gameType);
-            }
-            
-            function setupQuestion(gameType) {
-                // Reset options
-                gameOptions.forEach(option => {
-                    option.classList.remove('correct', 'incorrect');
-                    option.onclick = null;
-                });
-                
-                if (gameType === 'tebak-kata') {
-                    gameQuestion.textContent = 'Apa arti dari kata "Gemilang"?';
-                    gameOptions[0].textContent = 'Bersinar';
-                    gameOptions[1].textContent = 'Gelap';
-                    gameOptions[2].textContent = 'Bersuara';
-                    gameOptions[3].textContent = 'Berdansa';
-                    
-                    // Set correct answer (first option)
-                    gameOptions[0].onclick = function() { selectAnswer(this, true); };
-                    gameOptions[1].onclick = function() { selectAnswer(this, false); };
-                    gameOptions[2].onclick = function() { selectAnswer(this, false); };
-                    gameOptions[3].onclick = function() { selectAnswer(this, false); };
-                } 
-                else if (gameType === 'susun-kalimat') {
-                    gameQuestion.textContent = 'Susun kata-kata berikut menjadi kalimat yang benar:';
-                    gameOptions[0].textContent = 'Ibu pergi ke pasar';
-                    gameOptions[1].textContent = 'Pergi ibu ke pasar';
-                    gameOptions[2].textContent = 'Ke pasar ibu pergi';
-                    gameOptions[3].textContent = 'Pasar pergi ke ibu';
-                    
-                    // Set correct answer (first option)
-                    gameOptions[0].onclick = function() { selectAnswer(this, true); };
-                    gameOptions[1].onclick = function() { selectAnswer(this, false); };
-                    gameOptions[2].onclick = function() { selectAnswer(this, false); };
-                    gameOptions[3].onclick = function() { selectAnswer(this, false); };
-                } 
-                else if (gameType === 'cari-sinonim') {
-                    gameQuestion.textContent = 'Pilih sinonim yang tepat untuk kata "Besar"';
-                    gameOptions[0].textContent = 'Agung';
-                    gameOptions[1].textContent = 'Kecil';
-                    gameOptions[2].textContent = 'Sempit';
-                    gameOptions[3].textContent = 'Pendek';
-                    
-                    // Set correct answer (first option)
-                    gameOptions[0].onclick = function() { selectAnswer(this, true); };
-                    gameOptions[1].onclick = function() { selectAnswer(this, false); };
-                    gameOptions[2].onclick = function() { selectAnswer(this, false); };
-                    gameOptions[3].onclick = function() { selectAnswer(this, false); };
-                }
-            }
-            
-            function selectAnswer(option, isCorrect) {
-                // Disable all options
-                gameOptions.forEach(opt => {
-                    opt.onclick = null;
-                });
-                
-                if (isCorrect) {
-                    option.classList.add('correct');
-                    gameFeedback.textContent = 'Benar! Jawaban tepat.';
-                    gameFeedback.style.color = 'var(--success)';
-                    currentScore += 10;
-                    gameScore.textContent = currentScore;
-                } else {
-                    option.classList.add('incorrect');
-                    gameFeedback.textContent = 'Masih belum tepat. Coba lagi!';
-                    gameFeedback.style.color = 'var(--danger)';
-                    
-                    // Highlight correct answer
-                    gameOptions[0].classList.add('correct');
-                }
-                
-                nextQuestion.disabled = false;
-            }
-            
-            // Next question button
-            nextQuestion.addEventListener('click', function() {
-                setupQuestion(currentGame);
-                gameFeedback.textContent = '';
-                nextQuestion.disabled = true;
-            });
-            
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('nav a').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId !== '#') {
-                        document.querySelector(targetId).scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="app.js"></script>
 </body>
 </html>
