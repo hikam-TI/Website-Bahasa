@@ -14,6 +14,108 @@ let userProgress = {
     lastPlayed: null
 };
 
+// Tambahkan data pelajaran per chapter (contoh sederhana)
+const lessonsData = {
+    1: [
+        { title: "Pelajaran 1", content: "Kata dasar: Saya, Kamu, Dia." },
+        { title: "Pelajaran 2", content: "Kata dasar: Makan, Minum, Tidur." },
+        { title: "Pelajaran 3", content: "Kata dasar: Rumah, Sekolah, Kantor." },
+        { title: "Pelajaran 4", content: "Kata dasar: Merah, Biru, Hijau." },
+        { title: "Pelajaran 5", content: "Kata dasar: Cepat, Lambat, Bagus." }
+    ],
+    2: [
+        { title: "Pelajaran 1", content: "Tata bahasa: Subjek dan Predikat." },
+        { title: "Pelajaran 2", content: "Tata bahasa: Objek dan Keterangan." },
+        { title: "Pelajaran 3", content: "Tata bahasa: Kalimat Majemuk." },
+        { title: "Pelajaran 4", content: "Tata bahasa: Kata Ganti." },
+        { title: "Pelajaran 5", content: "Tata bahasa: Kata Sambung." }
+    ],
+    3: [
+        { title: "Pelajaran 1", content: "Pemahaman bacaan: Membaca teks pendek." },
+        { title: "Pelajaran 2", content: "Pemahaman bacaan: Menjawab pertanyaan." },
+        { title: "Pelajaran 3", content: "Pemahaman bacaan: Menemukan ide utama." },
+        { title: "Pelajaran 4", content: "Pemahaman bacaan: Menyimpulkan isi teks." },
+        { title: "Pelajaran 5", content: "Pemahaman bacaan: Membaca teks panjang." }
+    ]
+};
+
+// Ambil elemen modal pembelajaran dan kontrolnya
+const learningModal = document.getElementById('learningModal');
+const modalChapterTitle = document.getElementById('modalChapterTitle');
+const learningContent = document.getElementById('learningContent');
+const prevLessonBtn = document.getElementById('prevLesson');
+const nextLessonBtn = document.getElementById('nextLesson');
+const completeLessonBtn = document.getElementById('completeLesson');
+const lessonCounter = document.getElementById('lessonCounter');
+const closeLearningModalBtn = document.getElementById('closeLearningModal');
+
+let currentChapter = null;
+let currentLessonIndex = 0;
+
+// Fungsi tampilkan pelajaran saat ini
+function showLesson() {
+    const lessons = lessonsData[currentChapter];
+    if (!lessons) return;
+
+    const lesson = lessons[currentLessonIndex];
+    modalChapterTitle.textContent = `Chapter ${currentChapter} - ${lesson.title}`;
+    learningContent.textContent = lesson.content;
+    lessonCounter.textContent = `Pelajaran ${currentLessonIndex + 1} / ${lessons.length}`;
+
+    prevLessonBtn.style.display = currentLessonIndex === 0 ? 'none' : 'inline-block';
+    nextLessonBtn.style.display = currentLessonIndex === lessons.length - 1 ? 'none' : 'inline-block';
+    completeLessonBtn.style.display = currentLessonIndex === lessons.length - 1 ? 'inline-block' : 'none';
+}
+
+// Modifikasi setupChapterButtons agar buka modal pembelajaran
+function setupChapterButtons() {
+    chapterButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            currentChapter = e.target.getAttribute('data-chapter');
+            currentLessonIndex = 0;
+            showLesson();
+            learningModal.style.display = 'block';
+        });
+    });
+}
+
+// Event tombol navigasi pelajaran
+prevLessonBtn.addEventListener('click', () => {
+    if (currentLessonIndex > 0) {
+        currentLessonIndex--;
+        showLesson();
+    }
+});
+
+nextLessonBtn.addEventListener('click', () => {
+    const lessons = lessonsData[currentChapter];
+    if (currentLessonIndex < lessons.length - 1) {
+        currentLessonIndex++;
+        showLesson();
+    }
+});
+
+completeLessonBtn.addEventListener('click', () => {
+    // Tandai pelajaran selesai di progress
+    completeLesson(currentChapter);
+
+    showNotification(`Pelajaran chapter ${currentChapter} selesai!`);
+    learningModal.style.display = 'none';
+    updateProgressUI();
+});
+
+// Tutup modal pembelajaran
+closeLearningModalBtn.addEventListener('click', () => {
+    learningModal.style.display = 'none';
+});
+
+// Tutup modal jika klik di luar konten modal
+window.addEventListener('click', (e) => {
+    if (e.target === learningModal) {
+        learningModal.style.display = 'none';
+    }
+});
+
 // DOM Elements
 const navMenu = document.getElementById('nav-menu');
 const navToggle = document.getElementById('nav-toggle');
@@ -433,4 +535,5 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             });
         }
     });
+
 });
