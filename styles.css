@@ -12,7 +12,7 @@
     --accent-color: #F59E0B;
     --text-color: #1F2937;
     --text-light: #6B7280;
-    --background-color: #004680;
+    --background-color: #FFFFFF;
     --container-color: #004680;
     --border-color: #E5E7EB;
 }
@@ -805,5 +805,6 @@ button {
     }
 
 }
+
 
 
