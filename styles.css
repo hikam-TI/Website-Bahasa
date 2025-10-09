@@ -19,7 +19,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--background-color);
+    background: linear-gradient(to bottom, #004680 0%, #3B82F6 100%); /* Gradient biru tua ke biru muda */
     color: var(--text-color);
     line-height: 1.6;
 }
@@ -770,42 +770,3 @@ button {
 }
 
 .footer-link:hover {
-    color: var(--primary-color);
-}
-
-.footer-bottom {
-    text-align: center;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border-color);
-    color: var(--text-light);
-}
-
-/* Media Queries */
-@media screen and (max-width: 576px) {
-    .game-options {
-        grid-template-columns: 1fr;
-    }
-    
-    .hero-buttons, .game-controls {
-        flex-direction: column;
-    }
-    
-    .section {
-        padding: 4rem 0 2rem;
-    }
-}
-
-@media screen and (max-width: 350px) {
-    .chapters-container, .games-container {
-        grid-template-columns: 1fr;
-    }
-    
-    .progress-stats {
-        grid-template-columns: 1fr;
-    }
-
-}
-
-
-
-
