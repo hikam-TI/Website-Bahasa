@@ -10,8 +10,8 @@
     --primary-dark: #2563EB;
     --secondary-color: #10B981;
     --accent-color: #F59E0B;
-    --text-color: #1F2937;
-    --text-light: #6B7280;
+    --text-color: #FFFFFF;
+    --text-light: #E5E7EB;
     --background-color: #004680;
     --container-color: #FFFFFF;
     --border-color: #E5E7EB;
@@ -770,3 +770,4 @@ button {
 }
 
 .footer-link:hover {
+
