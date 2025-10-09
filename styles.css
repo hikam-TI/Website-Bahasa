@@ -560,7 +560,7 @@ button {
 
 .streak-day.active {
     background-color: var(--accent-color);
-    color: white;
+    color: black;
 }
 
 .profile-container {
@@ -770,4 +770,5 @@ button {
 }
 
 .footer-link:hover {
+
 
